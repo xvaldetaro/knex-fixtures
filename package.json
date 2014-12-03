@@ -37,7 +37,7 @@
   "readme": "# knex-fixtures\n\nPopulate your DB automatically with useful data with the help of fixture-factory and fakerjs\n\n## Usage\n\nAll your fixtures should be in a package, and exposed by the topmost package.\nA fixture must define its name, which is also a name of a table it will populate,\na model describing its DB entries and (optionally) dependencies on other fixtures.\n\nFor instance your fixture `index.js` could look like:\n\n    var user = {\n      name: 'users',\n      model: {\n        id: {\n          method: 'random.number',\n          options: {\n            min: 1,\n            max: 1e6,\n            _unique: true\n          }\n        },\n        name: 'name.lastName'\n      }\n    };\n\n    var property = {\n      name: 'property_addrs',\n      depends: [ 'users' ],\n      model: {\n        address: 'address.streetName',\n        belongs_to: {\n          reference: 'users.id'\n        }\n      }\n    }\n\n    module.exports = {\n      user: user,\n      property: property\n    };\n      \n\nNow you need to initialize fixtures with the models and a working DB connection:\n\n    knexFixtures(require('./fixtures'), knex);\n   \nAnd populate the DB:\n\n    knexFixtures.upgrade().then(function() {\n      console.log('Upgrade was successful!');\n    });\n\nHave fun! :)\n\n",
   "readmeFilename": "README.md",
   "_id": "knex-fixtures@0.1.0",
-  "_shasum": "cca4f0aaf15d993808c4613c3df2e57550b1d043",
-  "_from": "../../../../../tmp/npm-2754-70427daf/1417509362691-0.35173207079060376/beab1a92230529e4815ed7422a6c3ab06daaf6dc",
-  "_resolved": "git://github.com/colonyamerican/knex-fixtures#beab1a92230529e4815ed7422a6c3ab06daaf6dc"
+  "_shasum": "6b9fcc25866adf64ef4c59c0ee0c12716f157636",
+  "_from": "../../../../../tmp/npm-4860-3053698f/1417597039450-0.6412638591136783/65d1778171b497d8e6562d3fd05a9635fe681d2b",
+  "_resolved": "git://github.com/colonyamerican/knex-fixtures#65d1778171b497d8e6562d3fd05a9635fe681d2b"
 }
